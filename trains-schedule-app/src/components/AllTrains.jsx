@@ -1,5 +1,3 @@
-// src/components/AllTrains.js
-
 import React, { useEffect, useState } from 'react';
 import { getAllTrains } from '../api';
 
@@ -32,13 +30,11 @@ const AllTrains = () => {
     return (
         <div>
             <h1>All Trains Schedule</h1>
-            {/* Display trains data here */}
             <ul>
                 {trains.map((train) => (
                     <li key={train.trainNumber}>
                         <span>Train Name: {train.trainName}</span>
                         <span>Train Number: {train.trainNumber}</span>
-                        {/* Display other train details */}
                     </li>
                 ))}
             </ul>

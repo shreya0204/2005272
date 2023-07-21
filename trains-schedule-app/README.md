@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Trains Schedule Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive React-based Frontend Web Application to display the Trains Schedule provided by John Doe Railways.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+Introduction
+Features
+Installation
+Usage
+API Authentication
+Technologies Used
+Contributing
+License
 
-### `npm start`
+## Introduction
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This web application allows users to view the real-time schedule of all trains along with seat availability and prices for different coach types (sleeper and AC). The application fetches data from the John Doe Railways API and displays the train details in an organized manner.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The application consists of two pages:
 
-### `npm test`
+1. All Trains: Displays the schedule of all available trains.
+2. Single Train: Displays detailed information about a specific train.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `npm run build`
+1. Real-time display of train schedules, seat availability, and prices.
+2. Responsive design for seamless usage on various devices.
+3. User-friendly UI to prominently display important train details.
+4. Fetches data from the John Doe Railways API using authentication.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository or download the source code.
+2. Navigate to the project directory in the terminal.
+3. Install the required dependencies using npm: `npm install`
+4. To run the application locally, use the following command: `npm start`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The application will start on http://localhost:3000/ by default.
 
-### `npm run eject`
+## API Authentication
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. To access the John Doe Railways API and fetch train data, the application requires an access token. Follow the steps below to obtain the access token:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Register your company with the John Doe Railway Server using the /train/register API endpoint. Provide the required data, including your company name, owner name, roll number, owner email, and access code.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. After successful registration, you will receive a clientID and clientSecret. Use these credentials to obtain the access token by making a POST request to /train/auth API endpoint.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Update the getAccessToken function in api.js with your credentials obtained in step 2.
 
-## Learn More
+## Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React
+- React Router DOM
+- Axios
+- CSS (Material UI)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+With the access token in place, the application will be able to make API calls to fetch train data.
