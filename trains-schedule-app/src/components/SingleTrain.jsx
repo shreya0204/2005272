@@ -1,38 +1,45 @@
+
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getSingleTrain } from '../api';
+import './SingleTrain.css';
 
 const SingleTrain = () => {
     const { trainNumber } = useParams();
-    const [trainData, setTrainData] = useState(null);
+    const [train, setTrain] = useState({});
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch data of a specific train and store it in the state
                 const singleTrainData = await getSingleTrain(trainNumber);
-                setTrainData(singleTrainData);
+                setTrain(singleTrainData);
+                setLoading(false);
             } catch (error) {
-                // Handle error if the API call fails
                 console.error(error.message);
+                setLoading(false);
             }
         };
 
         fetchData();
     }, [trainNumber]);
 
-    if (!trainData) {
+    if (loading) {
         return <div>Loading...</div>;
     }
 
     return (
-        <div>
-            <h1>Single Train Schedule</h1>
-            {/* Display single train data here */}
-            <div>
-                <span>Train Name: {trainData.trainName}</span>
-                <span>Train Number: {trainData.trainNumber}</span>
-                {/* Display other train details */}
+        <div className="single-train-container">
+            <h1>{train.trainName} (Train Number: {train.trainNumber})</h1>
+            <div className="train-info">
+                <p>Departure Time: {train.departureTime.Hours}:{train.departureTime.Minutes}:{train.departureTime.Seconds}</p>
+                <p>Sleeper Price: {train.price.sleeper}</p>
+                <p>AC Price: {train.price.AC}</p>
+                <p>Sleeper Seats Available: {train.seatsAvailable.sleeper}</p>
+                <p>AC Seats Available: {train.seatsAvailable.AC}</p>
+                <p>Delay (in minutes): {train.delayedBy}</p>
+            </div>
+            <div className="train-details">
             </div>
         </div>
     );

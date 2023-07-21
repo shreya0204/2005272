@@ -1,0 +1,19 @@
+.single-train-container {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.train-info {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.train-details {
+  font-size: 16px;
+  margin: 5px 0;
+}

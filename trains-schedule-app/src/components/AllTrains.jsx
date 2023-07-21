@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getAllTrains } from '../api';
+import './AllTrains.css';
 
 const AllTrains = () => {
-    const [trains, setTrains] = useState([]); // Initialize trains state as an empty array
+    const [trains, setTrains] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Fetch all trains data and store it in the state
                 const allTrainsData = await getAllTrains();
-                console.log(allTrainsData);
                 setTrains(allTrainsData);
                 setLoading(false);
             } catch (error) {
-                // Handle error if the API call fails
                 console.error(error.message);
                 setLoading(false);
             }
@@ -28,16 +27,40 @@ const AllTrains = () => {
     }
 
     return (
-        <div>
+        <div className="all-trains-container">
             <h1>All Trains Schedule</h1>
-            <ul>
-                {trains.map((train) => (
-                    <li key={train.trainNumber}>
-                        <span>Train Name: {train.trainName}</span>
-                        <span>Train Number: {train.trainNumber}</span>
-                    </li>
-                ))}
-            </ul>
+            <table className="trains-table">
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Train Number</th>
+                        <th>Departure Time</th>
+                        <th>Sleeper Price</th>
+                        <th>AC Price</th>
+                        <th>Sleeper Seats</th>
+                        <th>AC Seats</th>
+                        <th>Delay (in minutes)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {trains.map((train) => (
+                        <tr key={train.trainNumber} className="train-row">
+                            <td>
+                                <Link to={`/trains/${train.trainNumber}`} className="train-link">
+                                    {train.trainName}
+                                </Link>
+                            </td>
+                            <td>{train.trainNumber}</td>
+                            <td>{`${train.departureTime.Hours}:${train.departureTime.Minutes}:${train.departureTime.Seconds}`}</td>
+                            <td>{train.price.sleeper}</td>
+                            <td>{train.price.AC}</td>
+                            <td>{train.seatsAvailable.sleeper}</td>
+                            <td>{train.seatsAvailable.AC}</td>
+                            <td>{train.delayedBy}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };
