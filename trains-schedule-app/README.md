@@ -2,16 +2,12 @@
 
 A responsive React-based Frontend Web Application to display the Trains Schedule provided by John Doe Railways.
 
-## Table of Contents
+## Preview
 
-Introduction
-Features
-Installation
-Usage
-API Authentication
-Technologies Used
-Contributing
-License
+![image](https://github.com/shreya0204/2005272/assets/78657883/8095450e-15c1-4c19-9008-780c18a6f25f)
+
+![image](https://github.com/shreya0204/2005272/assets/78657883/6636f437-36d0-443e-8e09-696504cd5e89)
+
 
 ## Introduction
 
